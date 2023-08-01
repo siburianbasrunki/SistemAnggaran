@@ -1,0 +1,151 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+
+  <!-- anggaran sebelum frontend 
+    <title>Tabel Variabel</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Tabel Variabel</h1>
+    <form action="{{ route('import.excel') }}" method="POST" enctype="multipart/form-data">
+        @csrf
+        <input type="file" name="file" accept=".xlsx, .xls">
+        <button type="submit">Import</button>
+    </form>
+    <button onclick="goToEditVariabelPage()">Edit Data Variabel</button>
+    <button onclick="goToTahapDuaPage()">Tahap Dua</button>
+    <input type="text" id="searchInput" placeholder="Search Nama Ruas">
+
+    <table id="variabelTable">
+        <thead>
+            <tr>
+                <th>No</th>
+                <th>Nama Ruas</th>
+                <th>Panjang Ruas</th>
+                <th>Variabel 1</th>
+                <th>Variabel 2</th>
+                <th>Variabel 3</th>
+                <th>Variabel 4</th>
+                <th>Variabel 5</th>
+                <th>Total</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($variabels as $variabel)
+            <tr>
+                <td>{{ $variabel->no }}</td>
+                <td>{{ $variabel->nama_ruas }}</td>
+                <td>{{ $variabel->panjang_ruas }}</td>
+                <td>{{ $variabel->variabel1 }}</td>
+                <td>{{ $variabel->variabel2 }}</td>
+                <td>{{ $variabel->variabel3 }}</td>
+                <td>{{ $variabel->variabel4 }}</td>
+                <td>{{ $variabel->variabel5 }}</td>
+                <td>{{ $variabel->total }}</td>
+            </tr>
+            @endforeach
+        </tbody>
+    </table>
+
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            $('#searchInput').on('input', function() {
+                var keyword = $(this).val().toLowerCase();
+                filterVariabels(keyword);
+            });
+        });
+
+        function filterVariabels(keyword) {
+            $('#variabelTable tbody tr').filter(function() {
+                $(this).toggle($(this).text().toLowerCase().indexOf(keyword) > -1);
+            });
+            $('#variabelTable thead').toggle($('#variabelTable tbody tr:visible').length > 0); // Tampilkan header hanya jika ada baris data yang terlihat
+        }
+
+        function goToEditVariabelPage() {
+            window.location.href = "{{ route('edit.variabel', ['id' => $variabel->id]) }}";
+        }
+
+        function goToTahapDuaPage() {
+            window.location.href = "{{ route('tahap.dua') }}";
+        }
+
+        -->
+        <!-- Tahap 2 sebelum frontend
+          <head>
+    <title>Edit Variabel</title>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Edit Variabel</h1>
+
+    <form action="{{ route('update.variabel', $variabel->id) }}" method="POST">
+        @csrf
+        @method('PUT')
+        <select name="nama_ruas">
+            @foreach($allVariabels as $var)
+            <option value="{{ $var->id }}" {{ $var->id == $variabel->id ? 'selected' : '' }}>
+                {{ $var->nama_ruas }}
+            </option>
+            @endforeach
+        </select>
+
+        <br><br>
+        <label for="variabel1">Variabel 1:</label>
+        <input type="text" id="variabel1" name="variabel1" value="{{ $variabel->variabel1 }}">
+        <br><br>
+        <label for="variabel2">Variabel 2:</label>
+        <input type="text" id="variabel2" name="variabel2" value="{{ $variabel->variabel2 }}">
+        <br><br>
+        <label for="variabel3">Variabel 3:</label>
+        <input type="text" id="variabel3" name="variabel3" value="{{ $variabel->variabel3 }}">
+        <br><br>
+        <label for="variabel4">Variabel 4:</label>
+        <input type="text" id="variabel4" name="variabel4" value="{{ $variabel->variabel4 }}">
+        <br><br>
+        <label for="variabel5">Variabel 5:</label>
+        <input type="text" id="variabel5" name="variabel5" value="{{ $variabel->variabel5 }}">
+        <br><br>
+        <button type="submit">Simpan</button>
+    </form>
+
+</body>
+        
+        -->
+
+        
+    </script>
+</body>
+
+
+</html>

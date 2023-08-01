@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="table-responsive table-wrapper mb-3">
+        <table id="data-table">
+       <thead>
+           <tr>
+               <th>No</th>
+               <th>Nama Ruas</th>
+               <th>Panjang Ruas</th>
+               <th>Kondisi Ruas Tidak Mantap (Km)</th>
+               <th>Kondisi Tidak Mantap (%)</th>
+               <th>Persen Tidak Mantap</th>
+               <th>Dana Anggaran</th>
+           </tr>
+       </thead>
+       <tbody>
+       @foreach($variabels as $variabel)
+       @if ($variabel['total'] >= $functions[0]['threshold'] && $variabel['total'] <= $functions[0]['weight'])
+       <tr>
+        <td>{{ $variabel['no'] }}</td>
+       <td>{{ $variabel['nama_ruas'] }}</td>
+       <td>{{ $variabel['panjang_ruas'] }}</td>
+       <td>{{ $variabel['pr_tidak_mantap'] }}</td>
+       <td id="pr-tidak-mantap-{{ $variabel['no'] }}">{{ $variabel['pr_tidak_mantap'] }}</td>
+       <!-- Kolom "Dana Anggaran" yang akan diisi hasil perhitungan -->
+       <td>{{$variabel['dana_anggaran']}}</td>
+       </tr>
+       @endif
+       @endforeach
+       </tbody>
+       </table>
+   </div>
+</body>
+</html>
