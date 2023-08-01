@@ -274,7 +274,7 @@
     
     <header class="d-flex justify-content-between px-0 py-0">
         <img src="image/bmbklogo.png"  style="width:40px">
-        <h1 class="fs-1 fw-bold text-light text-center">Dana Anggaran</h1>
+        <h1 class="fs-1 fw-bold text-light text-center">Tabel Variavel Ruas Jalan</h1>
         <form action="{{ route('logout') }}" method="POST" class="d-flex" role="search">
             @csrf
             @method('DELETE')
