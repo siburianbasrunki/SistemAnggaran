@@ -7,6 +7,6 @@
 - Carin Akiela Amanda- 120140009 as UI/UX
 
 ## Dekripsi Proyek
-
+Sistem Informasi berbasi web ini bertujuan untuk memberikan informasi dana anggaran pembagian ruas jalan yang ada di daerah Lampung. Dinas Bina Marga dan Bina Konstruksi juga membuat sistem informasi ini untuk pengguna user dan admin. Dengan hal ini, informasi yang pengguna user dapatkan bernilai real atau fakta dengan data - data yang dilampirkan dalam sistem informasi berbasis web ini dengan pembagian dana anggaran yang tepat pada ruas jalan tertentu sesuai pertimbangan nilai kerusakan dan prioritas jalan.
 
 
